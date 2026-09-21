@@ -1,0 +1,4 @@
+#Ignore CSV files and macOS system files
+csv_files/
+.DS_Store
+.vscode/
