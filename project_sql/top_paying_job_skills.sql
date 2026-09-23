@@ -26,7 +26,7 @@ WITH top_paying_jobs AS(
         job_postings_fact.company_id = company_dim.company_id
 WHERE
     job_location ILIKE 'Anywhere' AND
-    job_title = 'Data Analyst' AND
+    job_title_short = 'Data Analyst' AND
     salary_year_avg IS NOT NULL
 ORDER BY
     salary_year_avg DESC
@@ -34,6 +34,7 @@ LIMIT 10
 )
 SELECT
     top_paying_jobs.job_id,
+    top_paying_jobs.job_title,
     top_paying_jobs.company_name,
     top_paying_jobs.salary_year_avg,
     STRING_AGG(skills_dim.skills, ', ') AS skills
@@ -49,6 +50,7 @@ ON
     skills_job_dim.skill_id = skills_dim.skill_id
 GROUP BY
     top_paying_jobs.job_id,
+    top_paying_jobs.job_title,
     top_paying_jobs.company_name,
     top_paying_jobs.salary_year_avg
 ORDER BY
