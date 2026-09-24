@@ -9,7 +9,7 @@ helps identify the most financially rewarding skills to acquire or improve
 */
 SELECT
     skills,
-    AVG(salary_year_avg) AS salary
+    ROUND(AVG(salary_year_avg) ,0) AS salary
 FROM
     job_postings_fact
 JOIN

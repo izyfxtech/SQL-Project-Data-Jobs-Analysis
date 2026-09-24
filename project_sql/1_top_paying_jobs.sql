@@ -21,7 +21,7 @@ LEFT JOIN
 ON
     job_postings_fact.company_id = company_dim.company_id
 WHERE
-    job_title_short ILIKE '%Data Analyst%'
+    job_title_short = 'Data Analyst'
     AND
     job_location = 'Anywhere'
     AND
@@ -50,7 +50,7 @@ ON
 WHERE
     job_title_short ILIKE '%Data Analyst%'
     AND
-    job_location = '%Nigeria%'
+    job_location ILIKE '%Nigeria%'
     AND
     salary_year_avg IS NOT NULL
 ORDER BY
